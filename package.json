@@ -1,0 +1,18 @@
+{
+  "name": "HowFuckedIsTheT",
+  "version": "0.0.0",
+  "description": "pretty badly",
+  "main": "howfuckedisthet.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cavedweller/HowFuckedIsTheT.git"
+  },
+  "author": "Ben Brittain & Dan Cahoon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cavedweller/HowFuckedIsTheT/issues"
+  }
+}
