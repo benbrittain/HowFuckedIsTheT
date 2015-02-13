@@ -2,32 +2,36 @@ var React = require('react');
 var Router = require('react-router');
 var { Route, RouteHandler, Link } = Router;
 
+var ButtonToolbar = require('react-bootstrap/ButtonToolbar');
+var Button = require('react-bootstrap/Button');
+
 var App = React.createClass({
     mixins: [ Router.Navigation ],
     getInitialState: function () {
         return {
             lines: [
-            { name: 'Red' },
-            { name: 'Orange' },
-            { name: 'Green' },
-            { name: 'Blue' },
-            { name: 'Silver' }
+            { name: 'Red', status: 'fucked' },
+            { name: 'Orange', status: 'fucked'  },
+            { name: 'Green', status: 'fucked'  },
+            { name: 'Blue', status: 'fucked'  },
+            { name: 'Silver', status: 'fucked'  }
             ]
         };
     },
     render: function () {
+        var style = {"color": "red"};
         var links = this.state.lines.map(function (line, i) {
             return (
-                    <li key={i}>
-                        <Link to="line" params={line}>{line.name}</Link>
-                    </li>
+                    <Link to="line" params={line}>
+                        <Button className={"btn-" + line.name}>
+                            {line.name}
+                        </Button>
+                    </Link>
                    );
         });
         return (
                 <div className="app">
-                    <ul className="nav">
-                        {links}
-                    </ul>
+                            {links}
                     <div className="view">
                         <RouteHandler />
                     </div>
