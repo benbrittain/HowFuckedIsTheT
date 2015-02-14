@@ -1,0 +1,74 @@
+'use strict';
+var React = require('react'),
+    Router = require('react-router'),
+    { Route, Redirect, RouteHandler, Link } = Router,
+    AppConstants = require('../AppConstants'),
+    LineStore = require('../stores/LineStore'),
+    Line = require('./Line.jsx'),
+    LineDashboard;
+
+function getState() {
+    return {
+        lines: LineStore.getLines()
+    };
+}
+
+var LineLine = React.createClass({
+    propTypes: {
+        name: React.PropTypes.string,
+        status: React.PropTypes.string
+    },
+
+    render: function() {
+        var name = this.props.name;
+        var status = this.props.status;
+        return(
+                <li key={name}>
+                    <span>
+                        <div className={"line line-" + name}>
+                        {name} Line
+                        </div>
+                        : {status}
+                    </span>
+                </li>
+              )
+    }
+});
+
+LineDashboard = React.createClass({
+    getInitialState: function() {
+        return getState();
+    },
+
+    componentDidMount: function() {
+        LineStore.on(AppConstants.CHANGE_EVENT, this._onChange);
+    },
+
+    componentWillUnmount: function() {
+        LineStore.removeListener(AppConstants.CHANGE_EVENT, this._onChange);
+    },
+
+    _onChange: function() {
+        this.setState(getState());
+    },
+
+    render: function() {
+        var lines = this.state.lines.map(line =>
+                <Link
+                    to="line"
+                    params={{'colour': line.get('name')}}>
+                    <LineLine name={line.get('name')} status={line.get('status')} />
+                </Link>
+                ).toArray();
+        //TODO upgrade to 13 so toArray is unnecessary
+        return (
+                <div>
+                <ul c>
+                    { lines }
+                </ul>
+                </div>
+               );
+    }
+});
+
+module.exports = LineDashboard;

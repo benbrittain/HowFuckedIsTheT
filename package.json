@@ -34,8 +34,8 @@
   "homepage": "https://howfuckedisthet.com",
   "browserify": {
     "transform": [
-      "reactify",
-      "envify"
+        [ "reactify", { "es6": true } ],
+        "envify"
     ]
   }
 }
