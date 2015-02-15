@@ -41,7 +41,6 @@ function getRouteStatus(mbtaRouteId) {
             var response = JSON.parse(this.response);
             ServerActionCreators.updateRoute(response);
         } catch(error) {
-            console.err(error)
         }
 
     }
