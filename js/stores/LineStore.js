@@ -4,9 +4,8 @@ var EventEmitter = require('events'),
     Immutable = require('immutable'),
     AppDispatcher = require('../AppDispatcher'),
     AppConstants = require('../AppConstants'),
+    TrainStore = require('./TrainStore'),
     LineResources = require('./LineResources'),
-    _lineNames = LineResources.getImmutLineNames(),
-    _lineStatuses = LineResources.getImmutLineStatuses(),
     _lines = Immutable.Map(),
     _lines = _lines.set('Red', Immutable.Map({
         'name': 'Red',
@@ -31,30 +30,26 @@ var EventEmitter = require('events'),
 //TODO: remove all of those! ^^^^
 
 /**
- * Querying a random member of a structure.
- * @param {List<T>|List<any>} immutablePool - Immutable.List instance
- * @returns {*}
+ * Create the Lines object which contains the Name of the Line, MBTA id
+ * and status of the line in the private Store
+ * @param {Immutable Map} lines
  * @private
  */
-function _getRandom(immutablePool) {
-    var rnd = Math.floor(Math.random() * (immutablePool.size - 1));
-    return immutablePool.get(rnd);
+function _createLines(lines) {
+    console.log(lines);
+    _lines = _lines
 }
 
 /**
- * Creating an immutable Line object with the given name and a random status.
- * @param {string} name
+ * Update the Status/Fuckedness of the appropriate MBTA Line
+ * in the private Store
  * @private
  */
-function _create(name) {
-    var rndStatus = _getRandom(_mbtaStatuses);
-    _lines = _lines.set(name, rndStatus);
-}
-
-function _random() {
-    var rndName = _getRandom(_lineNames),
-        rndStatus = _getRandom(_lineStatuses);
-    _lines = _lines.set(rndName, rndStatus);
+function _calculateFuckedness() {
+    // The meat of this whole thing
+    // alerts?! average time till arival?
+    // manual setting?
+    _lines = _lines;
 }
 
 /**
@@ -63,17 +58,18 @@ function _random() {
 class LineStore extends EventEmitter {
     constructor() {
         super();
-
         this._dispatchToken = AppDispatcher.register(
                 (action) => {
                     switch (action.type) {
-                        case AppConstants.CREATE:
-                            _create(action.payload);
+                        case AppConstants.LOAD_ROUTES:
+                            _createLines(action.payload);
                             this.emit(AppConstants.CHANGE_EVENT);
                             break;
 
-                        case AppConstants.RANDOM:
-                            _random();
+                        case AppConstants.UPDATE_ROUTES:
+                            AppDispatcher.waitFor([TrainStore.dispatchToken]);
+                            console.log('after the trainstore');
+                            _calculateFuckedness(action.payload);
                             this.emit(AppConstants.CHANGE_EVENT);
                             break;
 

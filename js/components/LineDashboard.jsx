@@ -25,10 +25,12 @@ var LineLine = React.createClass({
         return(
                 <li key={name}>
                     <span>
-                        <div className={"line line-" + name}>
-                        {name} Line
-                        </div>
-                        : {status}
+                        <span className={"line line-" + name}>
+                            {name} Line
+                        </span>
+                        <span className="status">
+                            {status}
+                        </span>
                     </span>
                 </li>
               )
@@ -54,9 +56,7 @@ LineDashboard = React.createClass({
 
     render: function() {
         var lines = this.state.lines.map(line =>
-                <Link
-                    to="line"
-                    params={{'colour': line.get('name')}}>
+                <Link to="line" params={{'colour': line.get('name')}}>
                     <LineLine name={line.get('name')} status={line.get('status')} />
                 </Link>
                 ).toArray();
