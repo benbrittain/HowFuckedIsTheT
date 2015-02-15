@@ -7,8 +7,6 @@ var EventEmitter = require('events'),
     LineResources = require('./LineResources'),
     _trains = Immutable.Map();
 
-
-
 /**
  * Create the Trains object which contains the status of all Trains
  * @param {Immutable Map} trainLine
@@ -17,14 +15,12 @@ var EventEmitter = require('events'),
 function _updateTrains(trainLine) {
     var name = trainLine.get('route_name');
     var line = _trains.get(name);
-    console.log(line);
     if (line) {
         var l = line.push(trainLine);
     } else {
         var l = Immutable.List().push(trainLine);
     }
     _trains = _trains.set(name, l);
-    console.log(_trains.toJS());
 }
 
 /**
