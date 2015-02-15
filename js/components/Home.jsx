@@ -11,9 +11,9 @@ Home = React.createClass({
         return (
                 <div>
                     <Header/>
-                    <main>
+                    <div className="container-fluid">
                         <RouteHandler/>
-                    </main>
+                    </div>
                 </div>
                );
     }
