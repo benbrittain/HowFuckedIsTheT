@@ -7,7 +7,7 @@ Header = React.createClass({
     render: function() {
         return (
                 <div id="header">
-                    <h2> How Fucked is the &#9417;? </h2>
+                    <h1> How Fucked is the &#9417;? </h1>
                 </div>
                );
     }

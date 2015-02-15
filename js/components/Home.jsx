@@ -14,7 +14,6 @@ Home = React.createClass({
                     <main>
                         <RouteHandler/>
                     </main>
-                    <Footer/>
                 </div>
                );
     }

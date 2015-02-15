@@ -25,10 +25,14 @@ var LineLine = React.createClass({
         return(
                     <span id="row">
                         <span className={"line line-" + name}>
-                            {name}
+                            <h2>
+                                {name}
+                            </h2>
                         </span>
                         <span className="status">
-                            {status}
+                            <h2>
+                                {status}
+                            </h2>
                         </span>
                     </span>
               )

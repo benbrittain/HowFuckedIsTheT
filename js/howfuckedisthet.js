@@ -9,6 +9,6 @@ var React = require('react'),
 mbta.start();
 
 Router.run(routes, Router.HistoryLocation, function (Handler) {
-    React.render(<Handler/>, document.getElementById('app'));
+    React.render(<Handler/>, document.body);
 });
 
