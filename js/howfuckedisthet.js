@@ -3,7 +3,7 @@
 var React = require('react'),
     Router = require('react-router'),
     mbta = require('./mbta'),
-    routes = require('./routes');
+    routes = require('./routes')
 
 
 mbta.start();

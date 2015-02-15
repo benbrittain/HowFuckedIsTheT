@@ -1,26 +1,18 @@
 'use strict';
+
 var Immutable = require('immutable'),
-    _datas = require('../../assets/lines.json'),
-    _names = Immutable.List(_datas.names),
-    _statuses = Immutable.List(_datas.statuses);
+    _datas = require('./lines.json'),
+    _names = Immutable.List(_datas.names)
 
 /**
- * Return line names
+ * Return the lines we care about
+ * screw Mattapan, yay Silver line
  * @returns {List<T>|List<any>}
  */
-function getImmutLineNames() {
+function getLineNames() {
     return _names;
 }
 
-/**
- * Return possible line statuses
- * @returns {List<T>|List<any>}
- */
-function getImmutLineStatuses() {
-    return _statuses;
-}
-
 module.exports = {
-    getImmutLineNames: getImmutLineNames,
-    getImmutLineStatuses: getImmutLineStatuses
+    getLineNames: getLineNames
 };

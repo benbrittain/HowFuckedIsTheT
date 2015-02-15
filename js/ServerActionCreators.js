@@ -7,10 +7,14 @@ var Immutable = require('immutable'),
 
 function updateRoute(response) {
     if (typeof(response) === 'string') {
-        response = JSON.parse(response);
+        try {
+            response = JSON.parse(response);
+            var resp = Immutable.fromJS(response);
+            ActionCreators.fire(AppConstants.UPDATE_ROUTES, resp);
+        } catch(error) {
+            //console.error('fuck the MBTA. WHO THE HELL RETURNS XML INSTEAD OF JSON ON ERROR?!');
+        }
     }
-    var resp = Immutable.fromJS(response);
-    ActionCreators.fire(AppConstants.UPDATE_ROUTES, resp);
 }
 
 function receiveRoutes(response) {

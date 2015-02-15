@@ -5,23 +5,26 @@ var EventEmitter = require('events'),
     AppDispatcher = require('../AppDispatcher'),
     AppConstants = require('../AppConstants'),
     LineResources = require('./LineResources'),
-    _trains = Immutable.Map(),
-    _trains = _makeSomeTrainLines(_trains);
+    _trains = Immutable.Map();
 
 
-function _makeSomeTrainLines(trains) {
-    _trains = trains;
-}
 
 /**
- * Create the Trains object which contains the Name of the Line, MBTA id
- * and status of the line in the private Store
- * @param {Immutable Map} trainLines
+ * Create the Trains object which contains the status of all Trains
+ * @param {Immutable Map} trainLine
  * @private
  */
-function _updateTrains(trainLines) {
-    console.log(trainLines);
-    _trains = trainLines;
+function _updateTrains(trainLine) {
+    var name = trainLine.get('route_name');
+    var line = _trains.get(name);
+    console.log(line);
+    if (line) {
+        var l = line.push(trainLine);
+    } else {
+        var l = Immutable.List().push(trainLine);
+    }
+    _trains = _trains.set(name, l);
+    console.log(_trains.toJS());
 }
 
 /**
@@ -32,10 +35,9 @@ class TrainStore extends EventEmitter {
         super();
         TrainStore.dispatchToken = AppDispatcher.register(
                 (action) => {
-                    console.log(action);
                     switch (action.type) {
                         case AppConstants.UPDATE_ROUTES:
-                            console.log('updates in trainstore');
+                            console.log('updating routes');
                             _updateTrains(action.payload);
                             this.emit(AppConstants.CHANGE_EVENT);
                             break;
@@ -45,7 +47,7 @@ class TrainStore extends EventEmitter {
                 });
     }
 
-    getTrains() {
+    getTrainLines() {
         return _trains;
     }
 }

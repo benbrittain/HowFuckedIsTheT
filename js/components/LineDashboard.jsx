@@ -26,7 +26,7 @@ var LineLine = React.createClass({
                 <li key={name}>
                     <span>
                         <span className={"line line-" + name}>
-                            {name} Line
+                            {name}
                         </span>
                         <span className="status">
                             {status}
@@ -57,7 +57,7 @@ LineDashboard = React.createClass({
     render: function() {
         var lines = this.state.lines.map(line =>
                 <Link to="line" params={{'colour': line.get('name')}}>
-                    <LineLine name={line.get('name')} status={line.get('status')} />
+                    <LineLine name={line.get('name')} status={line.get('fuckedness')} />
                 </Link>
                 ).toArray();
         //TODO upgrade to 13 so toArray is unnecessary

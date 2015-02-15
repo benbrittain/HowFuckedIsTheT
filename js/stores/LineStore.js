@@ -6,28 +6,8 @@ var EventEmitter = require('events'),
     AppConstants = require('../AppConstants'),
     TrainStore = require('./TrainStore'),
     LineResources = require('./LineResources'),
-    _lines = Immutable.Map(),
-    _lines = _lines.set('Red', Immutable.Map({
-        'name': 'Red',
-        'status': 'fucked'
-    })),
-    _lines = _lines.set('Silver', Immutable.Map({
-        'name': 'Silver',
-        'status': 'fine'
-    })),
-    _lines = _lines.set('Green', Immutable.Map({
-        'name': 'Green',
-        'status': 'SO fucked'
-    })),
-    _lines = _lines.set('Blue', Immutable.Map({
-        'name': 'Blue',
-        'status': 'meh'
-    })),
-    _lines = _lines.set('Orange', Immutable.Map({
-        'name': 'Orange',
-        'status': 'fucked'
-    }));
-//TODO: remove all of those! ^^^^
+    _names = LineResources.getLineNames(),
+    _lines = Immutable.Map();
 
 /**
  * Create the Lines object which contains the Name of the Line, MBTA id
@@ -36,8 +16,14 @@ var EventEmitter = require('events'),
  * @private
  */
 function _createLines(lines) {
-    console.log(lines);
-    _lines = _lines
+    _names.forEach(function(colour) {
+        var state = Immutable.Map()
+            state = state.set('name', colour)
+            state = state.set('ids', lines.get(colour))
+            state = state.set('fuckedness', 'meh. fine.');
+        // Foolishly give the MBTA benefit of the doubt by default
+        _lines = _lines.set(colour, state);
+    });
 }
 
 /**
@@ -49,7 +35,7 @@ function _calculateFuckedness() {
     // The meat of this whole thing
     // alerts?! average time till arival?
     // manual setting?
-    _lines = _lines;
+    var lines = TrainStore.getTrainLines();
 }
 
 /**
@@ -58,7 +44,7 @@ function _calculateFuckedness() {
 class LineStore extends EventEmitter {
     constructor() {
         super();
-        this._dispatchToken = AppDispatcher.register(
+        LineStore.dispatchToken = AppDispatcher.register(
                 (action) => {
                     switch (action.type) {
                         case AppConstants.LOAD_ROUTES:
@@ -67,8 +53,8 @@ class LineStore extends EventEmitter {
                             break;
 
                         case AppConstants.UPDATE_ROUTES:
+                            // Ensure that the TrainStore has all the necessary info
                             AppDispatcher.waitFor([TrainStore.dispatchToken]);
-                            console.log('after the trainstore');
                             _calculateFuckedness(action.payload);
                             this.emit(AppConstants.CHANGE_EVENT);
                             break;
@@ -85,3 +71,4 @@ class LineStore extends EventEmitter {
 }
 
 module.exports = new LineStore();
+module.exports.dispatchToken = LineStore.dispatchToken;
