@@ -5,4 +5,5 @@ module.exports = {
     Line: require('./Line.jsx'),
     LineDashboard: require('./LineDashboard.jsx'),
     Footer: require('./Footer.jsx'),
+    Header: require('./Header.jsx')
 };

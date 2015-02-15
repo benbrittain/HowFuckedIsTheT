@@ -7,10 +7,8 @@ var React = require('react'),
 Footer = React.createClass({
     render: function() {
         return (
-                <div>
-                <footer>
-                $$$
-                </footer>
+                <div id="footer">
+                    This tool proudly provided by Ben Brittain
                 </div>
                );
     }

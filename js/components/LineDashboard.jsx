@@ -23,8 +23,7 @@ var LineLine = React.createClass({
         var name = this.props.name;
         var status = this.props.status;
         return(
-                <li key={name}>
-                    <span>
+                    <span id="row">
                         <span className={"line line-" + name}>
                             {name}
                         </span>
@@ -32,7 +31,6 @@ var LineLine = React.createClass({
                             {status}
                         </span>
                     </span>
-                </li>
               )
     }
 });
@@ -62,10 +60,8 @@ LineDashboard = React.createClass({
                 ).toArray();
         //TODO upgrade to 13 so toArray is unnecessary
         return (
-                <div>
-                <ul c>
-                    { lines }
-                </ul>
+                <div id="lines">
+                        { lines }
                 </div>
                );
     }
