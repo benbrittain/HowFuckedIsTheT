@@ -25,7 +25,9 @@
   },
   "scripts": {
     "start": "watchify -o js/bundle.js -v -d . & sass --watch css/howfuckedisthet.scss:css/main.css",
-    "build": "NODE_ENV=production browserify . | uglifyjs -cm > js/bundle.min.js"
+    "build": "NODE_ENV=production browserify . | uglifyjs -cm > bundle.min.js & sass --style compressed css/howfuckedisthet.scss:main.css",
+    "clean": "rm bundle.min.js; rm main.css; rm main.css.map",
+    "deploy": ""
   },
   "author": "Ben Brittain & Dan Cahoon",
   "license": "MIT",
