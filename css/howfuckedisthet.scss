@@ -8,13 +8,29 @@ $link-hover-color: #18bc9c;
  * Values from bootstrap: http://getbootstrap.com/customize/#less-variables
  */
 @mixin responsive($base-size) {
+    $line-height-computed: floor($base-size * $line-height-base);
+
     body { font-size: $base-size; }
-    h1 { font-size: floor($base-size * 2.6); }
-    h2 { font-size: floor($base-size * 2.15); }
-    h3 { font-size: ceil($font-size-base * 1.7); }
-    h4 { font-size: ceil($font-size-base * 1.25); }
-    h5 { font-size: $font-size-base; }
-    h6 { font-size: ceil($font-size-base * 0.85); }
+    h1, .h1 { font-size: floor($base-size * 2.6); }
+    h2, .h2 { font-size: floor($base-size * 2.15); }
+    h3, .h3 { font-size: ceil($base-size * 1.7); }
+    h4, .h4 { font-size: ceil($base-size * 1.25); }
+    h5, .h5 { font-size: $base-size; }
+    h6, .h6 { font-size: ceil($base-size * 0.85); }
+
+    h1, .h1,
+    h2, .h2,
+    h3, .h3 {
+        margin-top: $line-height-computed / 2;
+        margin-bottom: $line-height-computed / 2;
+    }
+
+    h4, .h4,
+    h5, .h5,
+    h6, .h6 {
+        margin-top: $line-height-computed / 4;
+        margin-bottom: $line-height-computed / 4;
+    }
 }
 
 @media (max-width: $screen-xs-max) {
