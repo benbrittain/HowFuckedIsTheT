@@ -8,7 +8,7 @@ Footer = React.createClass({
     render: function() {
         return (
                 <div id="footer">
-                    This tool proudly provided by Ben Brittain
+                    <span> Bitcoin Donations: 1GgsubyeX9g8DCxnM9qWSA9JrsnTeZLLG1 </span>
                 </div>
                );
     }
