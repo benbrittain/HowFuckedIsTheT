@@ -9,13 +9,14 @@ var React = require('react'),
 Home = React.createClass({
     render: function() {
         return (
-                <div className="container-fluid">
-                    <Header/>
-                    <div>
-                        <RouteHandler/>
-                    </div>
+            <div>
+                <Header/>
+                <div id="main" className="container-fluid">
+                    <RouteHandler/>
                 </div>
-               );
+                <Footer/>
+            </div>
+        );
     }
 });
 

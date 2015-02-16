@@ -7,10 +7,29 @@ var React = require('react'),
 Footer = React.createClass({
     render: function() {
         return (
-                <div id="footer">
-                    <span> Bitcoin Donations: 1GgsubyeX9g8DCxnM9qWSA9JrsnTeZLLG1 </span>
+            <footer>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-sm-12">
+                                    <ul className="list-inline">
+                                        <li>
+                                            <a href="https://github.com/cavedweller/HowFuckedIsTheT">
+                                                Github
+                                            </a>
+                                        </li>
+                                        <li>
+                                            Bitcoin Donations: 1GgsubyeX9g8DCxnM9qWSA9JrsnTeZLLG1
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-               );
+            </footer>
+        );
     }
 });
 

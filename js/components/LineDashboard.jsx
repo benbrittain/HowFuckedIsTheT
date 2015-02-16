@@ -27,12 +27,22 @@ var LineLine = React.createClass({
             <div className={"row line-" + name}>
                 <div className="container">
                     <div className="row">
-                        <div className="col-sm-6">
+                        <div className="col-sm-6 line-title">
                             <h2>{name}</h2>
                         </div>
-                        <div className="col-sm-6">
-                            <p>{status}</p>
-                            <p>Avg wait {wait}</p>
+                        <div className="col-sm-6 line-info">
+                            <div className="row">
+                                <div className="col-sm-12 col-xs-6">
+                                    <p className="status">
+                                        {status}
+                                    </p>
+                                </div>
+                                <div className="col-sm-12 col-xs-6">
+                                    <p className="wait">
+                                        Avg wait {wait}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

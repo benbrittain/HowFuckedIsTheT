@@ -4,11 +4,14 @@ $link-hover-color: #18bc9c;
 $link-hover-decoration: none;
 $grid-gutter-width: 40px;
 
+/* Train colors */
+$green: hsl(157, 100%, 25%);
+$blue: hsl(217, 56%, 42%);
+$orange: hsl(32, 98%, 50%);
+$red: hsl(2, 95%, 57%);
+
 @import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-/*
- * Values from bootstrap: http://getbootstrap.com/customize/#less-variables
- */
 @mixin responsive($base-size) {
     $line-height-computed: floor($base-size * $line-height-base);
 
@@ -20,19 +23,35 @@ $grid-gutter-width: 40px;
     h5, .h5 { font-size: $base-size; }
     h6, .h6 { font-size: ceil($base-size * 0.85); }
 
+    $line-height-computed: floor($base-size * $line-height-base);
+
     h1, .h1,
     h2, .h2,
     h3, .h3,
     h4, .h4,
     h5, .h5,
     h6, .h6 {
-        margin-top: 0;
-        margin-bottom: 0;
+        margin-top: $line-height-computed / 4;
+        margin-bottom: $line-height-computed / 4;
+    }
+
+    header {
+        margin-top: $line-height-computed / 2;
+        margin-bottom: $line-height-computed / 2;
     }
 }
 
 @media (max-width: $screen-xs-max) {
-    @include responsive(14px);
+    @include responsive(15px);
+    .line-title {
+        text-align: center;
+    }
+    .line-info p {
+        font-size: 120%;
+    }
+    .status {
+        text-align: right;
+    }
 }
 
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
@@ -47,32 +66,26 @@ $grid-gutter-width: 40px;
     @include responsive(45px);
 }
 
-.container .row [class*="col-"] {
-    padding-top: 15px;
-    padding-bottom: 15px;
+header {
+    text-align: center;
 }
 
-.container .row {
-    display: flex;
-    align-items: center;
-}
-
-header a {
+header a, footer a {
     color: $brand-primary;
 }
 
 .line-Green {
-    background-color: hsl(157, 100%, 25%) !important;
+    background-color: $green !important;
 }
 
 .line-Blue {
-    background-color: hsl(217, 56%, 42%) !important;
+    background-color: $blue !important;
 }
 
 .line-Orange {
-    background-color: hsl(32, 98%, 50%) !important;
+    background-color: $orange !important;
 }
 
 .line-Red {
-    background-color: hsl(2, 95%, 57%) !important;
+    background-color: $red !important;
 }

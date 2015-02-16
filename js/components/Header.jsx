@@ -8,16 +8,14 @@ var React = require('react'),
 Header = React.createClass({
     render: function() {
         return (
-            <header>
+            <header id="header" className="container-fluid">
                 <Link to="home" >
                     <div className="row">
                         <div className="container">
                             <div className="row">
-                                <div className="col-sm-12 text-center">
-                                    <h2>
-                                        How Fucked is the &#9417;?
-                                    </h2>
-                                </div>
+                                <h2>
+                                    How Fucked is the &#9417;?
+                                </h2>
                             </div>
                         </div>
                     </div>

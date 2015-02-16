@@ -21,7 +21,7 @@ function _createLines(lines) {
         var state = Immutable.Map()
             state = state.set('name', colour)
             state = state.set('ids', lines.get(colour))
-            state = state.set('fuckedness', 'probably fucked');
+            state = state.set('fuckedness', 'Probably fucked');
             state = state.set('wait', 'unknown');
         // Foolishly give the MBTA benefit of the doubt by default
         _lines = _lines.set(colour, state);
@@ -94,19 +94,19 @@ function _averageWait(stops) {
  */
 function _secondsToFuckedness(seconds) {
     if (seconds === undefined ) {
-        return 'probably fucked';
+        return 'Probably fucked';
     } else if (seconds <= 300) {
-        return 'not fucked at all';
+        return 'Not fucked at all';
     } else if (seconds > 300 && seconds <= 600) {
-        return 'a little fucked';
+        return 'A little fucked';
     } else if (seconds > 600 && seconds <= 900) {
-        return 'kinda fucked';
+        return 'Kinda fucked';
     } else if (seconds > 900 && seconds <= 1200) {
-        return 'really fucked';
+        return 'Really fucked';
     } else if (seconds > 1500 && seconds <= 1800) {
-        return 'incredibly fucked';
+        return 'Incredibly fucked';
     } else {
-        return 'holy shit is it ever fucked';
+        return 'Holy shit is it ever fucked';
     }
 }
 
