@@ -1,21 +1,29 @@
 'use strict';
 
 var React = require('react'),
+    Router = require('react-router'),
+    Link = Router.Link,
     Header;
 
 Header = React.createClass({
     render: function() {
         return (
-                <header className="navbar navbar-default navbar-fixed-top">
-                    <div className="container">
-                        <div className="navbar-header">
-                            <a className="navbar-brand" href="#">
-                                How Fucked is the &#9417;?
-                            </a>
+            <header>
+                <Link to="home" >
+                    <div className="row">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-sm-12 text-center">
+                                    <h2>
+                                        How Fucked is the &#9417;?
+                                    </h2>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </header>
-               );
+                </Link>
+            </header>
+        );
     }
 });
 

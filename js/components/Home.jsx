@@ -9,9 +9,9 @@ var React = require('react'),
 Home = React.createClass({
     render: function() {
         return (
-                <div>
+                <div className="container-fluid">
                     <Header/>
-                    <div className="container-fluid">
+                    <div>
                         <RouteHandler/>
                     </div>
                 </div>

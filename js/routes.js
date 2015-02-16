@@ -6,7 +6,7 @@ var React = require('react'),
 
 
 module.exports = (
-    <Route handler={Home}>
+    <Route name="home" path="/" handler={Home}>
         <DefaultRoute handler={LineDashboard}/>
         <Route name="line" path="line/:colour" handler={Line} />
     </Route>
