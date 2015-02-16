@@ -6,6 +6,7 @@ var EventEmitter = require('events'),
     AppConstants = require('../AppConstants'),
     TrainStore = require('./TrainStore'),
     LineResources = require('./LineResources'),
+    Utils = require('../utils'),
     _names = LineResources.getLineNames(),
     _lines = Immutable.Map();
 
@@ -33,10 +34,80 @@ function _createLines(lines) {
  * @private
  */
 function _calculateFuckedness() {
-    // The meat of this whole thing
-    // alerts?! average time till arival?
-    // manual setting?
-    var lines = TrainStore.getTrainLines();
+    var trainLines = TrainStore.getTrainLines();
+    _names.forEach(function(colour) {
+        var allStops = Utils.getDeepImmutableValues(trainLines, Immutable.List([colour, 'direction', 'trip', 'stop']));
+        if (allStops) {
+            var waitTimes = Immutable.Map();
+            allStops.forEach(function(stop) {
+                if (stop.get('stop_id') && stop.get('pre_away')) {
+                    var stopId = stop.get('stop_id');
+                    var wait = parseInt(stop.get('pre_away'));
+                    var previousWait = waitTimes.get(stopId);
+                    if (previousWait === undefined || wait < previousWait) {
+                        waitTimes = waitTimes.set(stopId, wait);
+                    }
+                }
+            });
+            _updateLineWait(colour, _averageWait(waitTimes));
+        }
+    });
+}
+
+/**
+ * Updates the given line with the average wait provided
+ * @param {String} colour
+ * @param {Number} avgWait
+ * @private
+ */
+function _updateLineWait(colour, avgWait) {
+    if (colour && avgWait) {
+        var line = _lines.get(colour);
+        line = line.merge({
+            'wait': Math.round(avgWait / 60).toString() + ' mins',
+            'fuckedness': _secondsToFuckedness(avgWait)
+        });
+        _lines = _lines.set(colour, line);
+    }
+}
+
+/**
+ * @param {Immutable List} stops
+ * @return {Number}
+ * @private
+ */
+function _averageWait(stops) {
+    if (stops.size > 0) {
+        var sum = stops.reduce(function(previousValue, currentValue, index, array) {
+            return previousValue + currentValue;
+        });
+        return sum / stops.size;
+    } else {
+        return undefined;
+    }
+}
+
+/**
+ * @param {Number} seconds
+ * @return {String}
+ * @private
+ */
+function _secondsToFuckedness(seconds) {
+    if (seconds === undefined ) {
+        return 'probably fucked';
+    } else if (seconds <= 300) {
+        return 'not fucked at all';
+    } else if (seconds > 300 && seconds <= 600) {
+        return 'a little fucked';
+    } else if (seconds > 600 && seconds <= 900) {
+        return 'kinda fucked';
+    } else if (seconds > 900 && seconds <= 1200) {
+        return 'really fucked';
+    } else if (seconds > 1500 && seconds <= 1800) {
+        return 'incredibly fucked';
+    } else {
+        return 'holy shit is it ever fucked';
+    }
 }
 
 /**
