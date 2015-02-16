@@ -1,7 +1,32 @@
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
 a { text-decoration:none; }
 
-#app {
+body {
+    padding-top: 120px;
     background: #eee;
+}
+
+header {
+    height: 120px;
+}
+
+.navbar-brand {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+    font-size: 100px;
+}
+
+#lines a {
+    color: #eee;
+}
+
+#lines a:hover {
+    color: #18bc9c;
 }
 
 #header {
@@ -21,7 +46,6 @@ a { text-decoration:none; }
     }
     h2 {
         font-size: 100px;
-        -webkit-text-stroke: 1px black;
     }
 }
 @media all and (min-width: 960px) and (max-width: 1399px) {
@@ -31,7 +55,6 @@ a { text-decoration:none; }
     }
     h2 {
         font-size: 60px;
-        -webkit-text-stroke: 1px black;
     }
 }
 
@@ -42,7 +65,6 @@ a { text-decoration:none; }
     }
     h2 {
         font-size: 30px;
-        -webkit-text-stroke: 1px black;
     }
 }
 
@@ -53,7 +75,6 @@ a { text-decoration:none; }
     }
     h2 {
         font-size: 30px;
-        -webkit-text-stroke: 1px black;
     }
 }
 

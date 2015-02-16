@@ -23,19 +23,23 @@ var LineLine = React.createClass({
         var name = this.props.name;
         var status = this.props.status;
         return(
-                    <span id="row">
-                        <span className={"line line-" + name}>
+            <div className={"row line-" + name}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-6">
                             <h2>
                                 {name}
                             </h2>
-                        </span>
-                        <span className="status">
+                        </div>
+                        <div className="col-md-6">
                             <h2>
                                 {status}
                             </h2>
-                        </span>
-                    </span>
-              )
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
     }
 });
 
