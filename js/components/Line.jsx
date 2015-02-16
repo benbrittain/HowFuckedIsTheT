@@ -19,7 +19,7 @@ function getState() {
 
 var LineSVG = React.createClass({
         render: function() {
-            return this.transferPropsTo(<svg>{this.props.children}</svg>);
+            return (<svg {...this.props}>{this.props.children}</svg>);
         }
 });
 
@@ -28,7 +28,7 @@ var Station = React.createClass({
     render: function() {
         return (
                 <svg>
-                    <text x={this.props.x + 30} y={this.props.y}>
+                    <text x={this.props.x + 50} y={this.props.y}>
                         {this.props.name}
                     </text>
                     <circle cx={this.props.x} cy={this.props.y} r="25"> station </circle>
@@ -68,11 +68,11 @@ Line = React.createClass({
 
     render: function() {
         var stations = LineResources.getStations(this.getParams().colour);
+        var style = {'border': '5px solid black'}
         return (
                 <div>
                     <div>
-                        showing a map for { this.getParams().colour}
-                        <LineSVG height="800" width="800">
+                        <LineSVG height="800" width="800" style={style}>
                             {
                                 stations.map(function(station, idx) {
                                     var nextStation = stations.get(idx+1);

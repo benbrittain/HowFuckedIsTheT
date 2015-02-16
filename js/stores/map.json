@@ -2,37 +2,37 @@
     "Red Line": [
         {
             name: "Alewife",
-            x: '0',
+            x: '50',
             y: '200'
         },
         {
             name: "Davis",
-            x: '0',
+            x: '50',
             y: '300'
         },
         {
             name: "Porter",
-            x: '0',
+            x: '50',
             y: '400'
         },
         {
             name: "Harvard",
-            x: '0',
+            x: '50',
             y: '500'
         },
         {
             name: "Central",
-            x: '0',
+            x: '50',
             y: '600'
         },
         {
             name: "Kendall/MIT",
-            x: '0',
+            x: '50',
             y: '700'
         },
         {
             name: "Charles/MGH",
-            x: '0',
+            x: '50',
             y: '800'
         }
     ]
