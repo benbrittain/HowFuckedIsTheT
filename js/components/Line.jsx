@@ -28,9 +28,7 @@ var Station = React.createClass({
     render: function() {
         return (
                 <svg>
-                    <text x={this.props.x + 50} y={this.props.y}>
-                        {this.props.name}
-                    </text>
+                    <text x={this.props.x + 50} y={this.props.y}>{this.props.name}</text>
                     <circle cx={this.props.x} cy={this.props.y} r="25"> station </circle>
                 </svg>
                 );
@@ -40,9 +38,41 @@ var Station = React.createClass({
 var TrainLine = React.createClass({
     render: function() {
         return(
-                <line x1={this.props.xs} y1={this.props.ys} x2={this.props.xe} y2={this.props.ye}
-                    strokeWidth="20"
-                    stroke="red" />
+                <line x1={this.props.xs}
+                      y1={this.props.ys}
+                      x2={this.props.xe}
+                      y2={this.props.ye}
+                      strokeWidth="20"
+                      stroke="red" />
+              )
+    }
+});
+
+
+var StationTree = React.createClass({
+    render: function() {
+        var children = this.props.station.get('next_stations');
+        var subStationTree= children.map(nextStation =>
+                <StationTree station={nextStation}
+                             xscale={this.props.xscale}
+                             yscale={this.props.yscale} />
+                ).toJS();
+
+        var xscale = parseInt(this.props.xscale);
+        var yscale = parseInt(this.props.yscale);
+        var x = xscale * parseInt(this.props.station.get('x'));
+        var y = yscale * parseInt(this.props.station.get('y'));
+        var name = this.props.station.get('name');
+        return(
+                <svg>
+                {children.map(nextStation =>
+                        <TrainLine xs={x} ys={y}
+                                   xe={parseInt(nextStation.get('x')) * xscale}
+                                   ye={parseInt(nextStation.get('y')) * yscale} />
+                        ).toJS()}
+                <Station x={x} y={y} name={name} />
+                {subStationTree}
+                </svg>
               )
     }
 });
@@ -69,28 +99,18 @@ Line = React.createClass({
     render: function() {
         var stations = LineResources.getStations(this.getParams().colour);
         var style = {'border': '5px solid black'}
+        var yscale = 100;
+        var xscale = 300;
+
+        var colour = stations.get('colour');
+        var station = stations.get('root');
+
         return (
                 <div>
                     <div>
-                        <LineSVG height="800" width="800" style={style}>
-                            {
-                                stations.map(function(station, idx) {
-                                    var nextStation = stations.get(idx+1);
-                                    if (nextStation) {
-                                        return (<TrainLine
-                                                   xs={station.get('x')}
-                                                   ys={station.get('y')}
-                                                   xe={nextStation.get('x')}
-                                                   ye={nextStation.get('y')} />)
-                                    }
-                                }).toJS()
-                            }
-                            {
-                                stations.map(station =>
-                                        <Station name={station.get('name')}
-                                                 x={station.get('x')}
-                                                 y={station.get('y')} />).toJS()
-                            }
+                        <LineSVG height="2200" width="800" style={style}>
+                            <StationTree xscale={xscale} yscale={yscale} station={station} colour={colour}>
+                            </StationTree>
                         </LineSVG>
                     </div>
                 </div>);
