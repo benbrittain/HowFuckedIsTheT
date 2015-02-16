@@ -2,7 +2,18 @@
 
 var Immutable = require('immutable'),
     _datas = require('./lines.json'),
-    _names = Immutable.List(_datas.names)
+    _names = Immutable.List(_datas.names),
+    _mapDatas = require('./map.json'),
+    _map = Immutable.fromJS(_mapDatas);
+
+/**
+ * return the data structure to draw the maps
+ * @param {String} line
+ * @returns {List<T>|List<any>}
+ */
+function getStations(line) {
+    return _map.get('lines').get(line);
+}
 
 /**
  * Return the lines we care about
@@ -14,5 +25,6 @@ function getLineNames() {
 }
 
 module.exports = {
-    getLineNames: getLineNames
+    getLineNames: getLineNames,
+    getStations: getStations
 };

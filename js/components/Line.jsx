@@ -2,10 +2,11 @@
 
 var React = require('react'),
     Router = require('react-router'),
+    Immutable = require('immutable'),
     AppConstants = require('../AppConstants'),
     ActionCreators = require('../ActionCreators'),
     LineStore = require('../stores/LineStore'),
-    Immutable = require('immutable'),
+    LineResources = require('../stores/LineResources'),
     Line;
 
 function getState() {
@@ -46,11 +47,6 @@ var TrainLine = React.createClass({
     }
 });
 
-var stations = Immutable.List();
-stations = stations.push(Immutable.Map({name: 'MIT/Kendall', x: 30, y: 80}));
-stations = stations.push(Immutable.Map({name: 'Central', x: 30, y: 400}));
-stations = stations.push(Immutable.Map({name: 'Harvard', x: 30, y: 600}));
-
 Line = React.createClass({
     mixins: [ Router.State ],
 
@@ -71,6 +67,7 @@ Line = React.createClass({
     },
 
     render: function() {
+        var stations = LineResources.getStations(this.getParams().colour);
         return (
                 <div>
                     <div>
