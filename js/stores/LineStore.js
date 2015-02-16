@@ -20,7 +20,8 @@ function _createLines(lines) {
         var state = Immutable.Map()
             state = state.set('name', colour)
             state = state.set('ids', lines.get(colour))
-            state = state.set('fuckedness', 'meh. fine.');
+            state = state.set('fuckedness', 'probably fucked');
+            state = state.set('wait', 'unknown');
         // Foolishly give the MBTA benefit of the doubt by default
         _lines = _lines.set(colour, state);
     });

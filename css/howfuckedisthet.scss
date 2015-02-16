@@ -1,6 +1,8 @@
 $body-bg: #eee;
 $link-color: #eee;
 $link-hover-color: #18bc9c;
+$link-hover-decoration: none;
+$grid-gutter-width: 40px;
 
 @import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -20,16 +22,12 @@ $link-hover-color: #18bc9c;
 
     h1, .h1,
     h2, .h2,
-    h3, .h3 {
-        margin-top: $line-height-computed / 2;
-        margin-bottom: $line-height-computed / 2;
-    }
-
+    h3, .h3,
     h4, .h4,
     h5, .h5,
     h6, .h6 {
-        margin-top: $line-height-computed / 4;
-        margin-bottom: $line-height-computed / 4;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 }
 
@@ -42,11 +40,21 @@ $link-hover-color: #18bc9c;
 }
 
 @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
-    @include responsive(38px);
+    @include responsive(37px);
 }
 
 @media (min-width: $screen-lg-min) {
-    @include responsive(46px);
+    @include responsive(45px);
+}
+
+.container .row [class*="col-"] {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.container .row {
+    display: flex;
+    align-items: center;
 }
 
 header a {

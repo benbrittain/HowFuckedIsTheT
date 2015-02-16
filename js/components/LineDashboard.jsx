@@ -22,19 +22,17 @@ var LineLine = React.createClass({
     render: function() {
         var name = this.props.name;
         var status = this.props.status;
+        var wait = this.props.wait;
         return(
             <div className={"row line-" + name}>
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-6">
-                            <h2>
-                                {name}
-                            </h2>
+                            <h2>{name}</h2>
                         </div>
                         <div className="col-sm-6">
-                            <h2>
-                                {status}
-                            </h2>
+                            <p>{status}</p>
+                            <p>Avg wait {wait}</p>
                         </div>
                     </div>
                 </div>
@@ -63,7 +61,7 @@ LineDashboard = React.createClass({
     render: function() {
         var lines = this.state.lines.map(line =>
                 <Link to="line" params={{'colour': line.get('name')}}>
-                    <LineLine name={line.get('name')} status={line.get('fuckedness')} />
+                    <LineLine name={line.get('name')} status={line.get('fuckedness')} wait={line.get('wait')} />
                 </Link>
                 ).toArray();
         //TODO upgrade to 13 so toArray is unnecessary

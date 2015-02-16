@@ -6,7 +6,6 @@ var Immutable = require('immutable'),
     AppConstants = require('./AppConstants');
 
 function updateRoute(response) {
-    response = JSON.parse(response);
     var resp = Immutable.fromJS(response);
     ActionCreators.fire(AppConstants.UPDATE_ROUTES, resp);
 }
