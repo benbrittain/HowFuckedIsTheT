@@ -232,6 +232,148 @@
             "x": "1",
             "y": "1"
         }
+    },
+    "Orange Line": {
+        "colour": "orange",
+        "root": {
+            "name": "Oak Grove",
+            "next_stations": [
+            {
+                "name": "Malden Center",
+                "next_stations": [
+                {
+                    "name": "Wellington",
+                    "next_stations": [
+                    {
+                        "name": "Assembly",
+                        "next_stations": [
+                        {
+                            "name": "Sullivan Square",
+                            "next_stations": [
+                            {
+                                "name": "Community College",
+                                "next_stations": [
+                                {
+                                    "name": "North",
+                                    "next_stations": [
+                                    {
+                                        "name": "Haymarket",
+                                        "next_stations": [
+                                        {
+                                            "name": "State",
+                                            "next_stations": [
+                                            {
+                                                "name": "Downtown Crossing",
+                                                "next_stations": [
+                                                {
+                                                    "name": "Chinatown",
+                                                    "next_stations": [
+                                                    {
+                                                        "name": "Tufts Medical Center",
+                                                        "next_stations": [
+                                                        {
+                                                            "name": "Back Bay",
+                                                            "next_stations": [
+                                                            {
+                                                                "name": "Mass Ave",
+                                                                "next_stations": [
+                                                                {
+                                                                    "name": "Ruggles",
+                                                                    "next_stations": [
+                                                                    {
+                                                                        "name": "Roxbury Crossing",
+                                                                        "next_stations": [
+                                                                        {
+                                                                            "name": "Jackson Square",
+                                                                            "next_stations": [
+                                                                            {
+                                                                                "name": "Stony Brook",
+                                                                                "next_stations": [
+                                                                                {
+                                                                                    "name": "Green Street",
+                                                                                    "next_stations": [
+                                                                                    {
+                                                                                        "name": "Forest Hills",
+                                                                                        "next_stations": [],
+                                                                                        "x": "1",
+                                                                                        "y": "20"
+                                                                                    }
+                                                                                    ],
+                                                                                    "x": "1",
+                                                                                    "y": "19"
+                                                                                }
+                                                                                ],
+                                                                                "x": "1",
+                                                                                "y": "18"
+                                                                            }
+                                                                            ],
+                                                                            "x": "1",
+                                                                            "y": "17"
+                                                                        }
+                                                                        ],
+                                                                        "x": "1",
+                                                                        "y": "16"
+                                                                    }
+                                                                    ],
+                                                                    "x": "1",
+                                                                    "y": "15"
+                                                                }
+                                                                ],
+                                                                "x": "1",
+                                                                "y": "14"
+                                                            }
+                                                            ],
+                                                            "x": "1",
+                                                            "y": "13"
+                                                        }
+                                                        ],
+                                                        "x": "1",
+                                                        "y": "12"
+                                                    }
+                                                    ],
+                                                    "x": "1",
+                                                    "y": "11"
+                                                }
+                                                ],
+                                                "x": "1",
+                                                "y": "10"
+                                            }
+                                            ],
+                                            "x": "1",
+                                            "y": "9"
+                                        }
+                                        ],
+                                        "x": "1",
+                                        "y": "8"
+                                    }
+                                    ],
+                                    "x": "1",
+                                    "y": "7"
+                                }
+                                ],
+                                "x": "1",
+                                "y": "6"
+                            }
+                            ],
+                            "x": "1",
+                            "y": "5"
+                        }
+                        ],
+                        "x": "1",
+                        "y": "4"
+                    }
+                    ],
+                    "x": "1",
+                    "y": "3"
+                }
+                ],
+                "x": "1",
+                "y": "2"
+            }
+            ],
+            "x": "1",
+            "y": "1"
+        }
     }
           }
 }
