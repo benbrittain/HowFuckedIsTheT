@@ -51,27 +51,25 @@ var TrainLine = React.createClass({
 
 var StationTree = React.createClass({
     render: function() {
-        var children = this.props.station.get('next_stations');
-        var subStationTree= children.map(nextStation =>
-                <StationTree station={nextStation}
-                             xscale={this.props.xscale}
-                             yscale={this.props.yscale} />
-                ).toJS();
+        var { station, ...other } = this.props;
 
-        var xscale = parseInt(this.props.xscale);
-        var yscale = parseInt(this.props.yscale);
-        var x = xscale * parseInt(this.props.station.get('x'));
-        var y = yscale * parseInt(this.props.station.get('y'));
-        var name = this.props.station.get('name');
+        var children = this.props.station.get('next_stations');
+        var x = this.props.xscale * parseInt(station.get('x'));
+        var y = this.props.yscale * parseInt(station.get('y'));
+        var name = station.get('name');
+
+        var subStationTree = children.map(nextStation =>
+                <StationTree station={nextStation} {...other} />);
+        var trainLines = children.map(nextStation =>
+                        <TrainLine xs={x} ys={y}
+                                   xe={parseInt(nextStation.get('x')) * this.props.xscale}
+                                   ye={parseInt(nextStation.get('y')) * this.props.yscale} />
+                        );
         return(
                 <svg>
-                {children.map(nextStation =>
-                        <TrainLine xs={x} ys={y}
-                                   xe={parseInt(nextStation.get('x')) * xscale}
-                                   ye={parseInt(nextStation.get('y')) * yscale} />
-                        ).toJS()}
+                {trainLines.toJS()}
                 <Station x={x} y={y} name={name} />
-                {subStationTree}
+                {subStationTree.toJS()}
                 </svg>
               )
     }
@@ -108,9 +106,8 @@ Line = React.createClass({
         return (
                 <div>
                     <div>
-                        <LineSVG height="2200" width="800" style={style}>
-                            <StationTree xscale={xscale} yscale={yscale} station={station} colour={colour}>
-                            </StationTree>
+                        <LineSVG height="2200" width="1800" style={style}>
+                            <StationTree xscale={xscale} yscale={yscale} station={station} colour={colour} />
                         </LineSVG>
                     </div>
                 </div>);

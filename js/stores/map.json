@@ -3,92 +3,92 @@
         "colour": "Red",
         "root": {
             "y": "1",
-            "x": "1",
+            "x": "2",
             "name": "Alewife",
             "next_stations": [
             {
                 "y": "2",
-                "x": "1",
+                "x": "2",
                 "name": "Davis",
                 "next_stations": [
                 {
                     "y": "3",
-                    "x": "1",
+                    "x": "2",
                     "name": "Porter",
                     "next_stations": [
                     {
                         "y": "4",
-                        "x": "1",
+                        "x": "2",
                         "name": "Harvard",
                         "next_stations": [
                         {
                             "y": "5",
-                            "x": "1",
+                            "x": "2",
                             "name": "Central",
                             "next_stations": [
                             {
                                 "y": "6",
-                                "x": "1",
-                                "name": "Kendall",
+                                "x": "2",
+                                "name": "Kendall/MIT",
                                 "next_stations": [
                                 {
                                     "y": "7",
-                                    "x": "1",
+                                    "x": "2",
                                     "name": "Charles/MGH",
                                     "next_stations": [
                                     {
                                         "y": "8",
-                                        "x": "1",
+                                        "x": "2",
                                         "name": "Park",
                                         "next_stations": [
                                         {
                                             "y": "9",
-                                            "x": "1",
+                                            "x": "2",
                                             "name": "Downtown Crossing",
                                             "next_stations": [
                                             {
                                                 "y": "10",
-                                                "x": "1",
+                                                "x": "2",
                                                 "name": "South",
                                                 "next_stations": [
                                                 {
                                                     "y": "11",
-                                                    "x": "1",
+                                                    "x": "2",
                                                     "name": "Broadway",
                                                     "next_stations": [
                                                     {
                                                         "y": "12",
-                                                        "x": "1",
+                                                        "x": "2",
                                                         "name": "Andrew",
                                                         "next_stations": [
                                                         {
                                                             "y": "13",
-                                                            "x": "1",
+                                                            "x": "2",
                                                             "name": "JFK/UMass",
                                                             "next_stations": [
                                                             {
                                                                 "y": "14",
-                                                                "x": "2",
+                                                                "x": "3",
                                                                 "name": "North Quincy",
                                                                 "next_stations": [
                                                                 {
                                                                     "y": "15",
-                                                                    "x": "2",
+                                                                    "x": "3",
                                                                     "name": "Wollaston",
                                                                     "next_stations": [
                                                                     {
                                                                         "y": "16",
-                                                                        "x": "2",
+                                                                        "x": "3",
                                                                         "name": "Quincy Center",
                                                                         "next_stations": [
                                                                         {
                                                                             "y": "17",
-                                                                            "x": "2",
+                                                                            "x": "3",
                                                                             "name": "Quincy Adams",
                                                                             "next_stations": [
                                                                             {
                                                                                 "y": "18",
-                                                                                "x": "2",
+                                                                                "x": "3",
                                                                                 "name": "Braintree",
                                                                                 "next_stations": []
                                                                             }
@@ -102,22 +102,22 @@
                                                             },
                                                             {
                                                                 "y": "14",
-                                                                "x": "0",
+                                                                "x": "1",
                                                                 "name": "Savin Hill",
                                                                 "next_stations": [
                                                                 {
                                                                     "y": "15",
-                                                                    "x": "0",
+                                                                    "x": "1",
                                                                     "name": "Fields Corner",
                                                                     "next_stations": [
                                                                     {
                                                                         "y": "16",
-                                                                        "x": "0",
+                                                                        "x": "1",
                                                                         "name": "Shawmut",
                                                                         "next_stations": [
                                                                         {
                                                                             "y": "17",
-                                                                            "x": "0",
+                                                                            "x": "1",
                                                                             "name": "Ashmont",
                                                                             "next_stations": []
                                                                         }
