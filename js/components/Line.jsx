@@ -181,7 +181,7 @@ Line = React.createClass({
                 <div>
                     <LineInfo line={this.state.lines.get(this.getParams().colour) || Immutable.Map()} colour={colour} />
                     <div>
-                        <LineSVG height="2200" width="1800" style={style}>
+                        <LineSVG height={height} width={width} style={style}>
                             <StationTree
                                 xscale={xscale}
                                 yscale={yscale}
