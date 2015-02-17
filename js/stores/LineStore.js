@@ -148,7 +148,7 @@ function _secondsToFuckedness(seconds) {
         return 'Kinda fucked';
     } else if (seconds > 900 && seconds <= 1200) {
         return 'Really fucked';
-    } else if (seconds > 1500 && seconds <= 1800) {
+    } else if (seconds > 1200 && seconds <= 1500) {
         return 'Incredibly fucked';
     } else {
         return 'Holy shit is it ever fucked';
