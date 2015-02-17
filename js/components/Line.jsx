@@ -93,6 +93,42 @@ var StationTree = React.createClass({
     }
 });
 
+
+var LineInfo = React.createClass({
+    render: function() {
+        var directions = this.props.line.get('directions');
+        var cols = 12;
+        var directionColumns = null;
+        if (directions && directions.size > 0) {
+            cols = Math.floor(12 / directions.size);
+            directionColumns = directions.map(function(deets, direction) {
+                return (
+                    <div key={direction} className={"col-sm-" + cols}>
+                        <h3>{direction}</h3>
+                        <p>
+                            {deets.get('fuckedness')}
+                            <br/>
+                            Avg wait {deets.get('wait')}
+                            <br/>
+                            {deets.get('trains')} active trains
+                        </p>
+                    </div>
+                );
+            }).toJS();
+        }
+
+        return (
+            <div className={"row line-" + this.props.colour}>
+                <div className="container line-info">
+                    <div className="row">
+                        {directionColumns}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+});
+
 Line = React.createClass({
     mixins: [ Router.State ],
 
@@ -143,6 +179,7 @@ Line = React.createClass({
 
         return (
                 <div>
+                    <LineInfo line={this.state.lines.get(this.getParams().colour) || Immutable.Map()} colour={colour} />
                     <div>
                         <LineSVG height="2200" width="1800" style={style}>
                             <StationTree
