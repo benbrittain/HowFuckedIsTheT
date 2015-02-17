@@ -5,6 +5,7 @@ var React = require('react'),
     Immutable = require('immutable'),
     AppConstants = require('../AppConstants'),
     ActionCreators = require('../ActionCreators'),
+    TrainStore = require('../stores/TrainStore'),
     LineStore = require('../stores/LineStore'),
     LineResources = require('../stores/LineResources'),
     Line;
@@ -12,10 +13,11 @@ var React = require('react'),
 function getState() {
     // Maybe only grab the colour?
     return {
-        lines: LineStore.getLines()
+        lines: LineStore.getLines(),
+        trains: TrainStore.getTrainLines(),
+        trainsAtStations: TrainStore.getTrainsAtStations()
     };
 }
-
 
 var LineSVG = React.createClass({
         render: function() {
@@ -37,14 +39,13 @@ var Station = React.createClass({
 
 var TrainLine = React.createClass({
     render: function() {
-        return(
-                <line x1={this.props.xs}
-                      y1={this.props.ys}
-                      x2={this.props.xe}
-                      y2={this.props.ye}
-                      strokeWidth="20"
-                      stroke="red" />
-              )
+        return( <line {...this.props} strokeWidth="20" stroke="red" />)
+    }
+});
+
+var Train = React.createClass({
+    render: function() {
+        return ( <rect height="50" width="50" {...this.props} >{this.props.children}</rect>)
     }
 });
 
@@ -52,6 +53,8 @@ var TrainLine = React.createClass({
 var StationTree = React.createClass({
     render: function() {
         var { station, ...other } = this.props;
+        var trainsAtStations = this.props.trainsAtStations;
+
 
         var children = this.props.station.get('next_stations');
         var x = this.props.xscale * parseInt(station.get('x'));
@@ -61,15 +64,30 @@ var StationTree = React.createClass({
         var subStationTree = children.map(nextStation =>
                 <StationTree station={nextStation} {...other} />);
         var trainLines = children.map(nextStation =>
-                        <TrainLine xs={x} ys={y}
-                                   xe={parseInt(nextStation.get('x')) * this.props.xscale}
-                                   ye={parseInt(nextStation.get('y')) * this.props.yscale} />
+                        <TrainLine x1={x} y1={y}
+                                   x2={parseInt(nextStation.get('x')) * this.props.xscale}
+                                   y2={parseInt(nextStation.get('y')) * this.props.yscale} />
                         );
+
+        var trains = Immutable.Map();
+        var station = trainsAtStations.get(name);
+        if (station) {
+            trains = station.map(function(train, offset) {
+                console.log("MAKIN A TRAIN");
+                var x = this.props.xscale * parseInt(this.props.station.get('x'));
+                var y = this.props.yscale * parseInt(this.props.station.get('y'));
+                console.log(x);
+                console.log(y);
+                return (<Train x={x - 100} y={y} />)
+            }, this);
+        }
+
         return(
                 <svg>
-                {trainLines.toJS()}
-                <Station x={x} y={y} name={name} />
-                {subStationTree.toJS()}
+                    {trainLines.toJS()}
+                    <Station x={x} y={y} name={name} />
+                    {trains.toJS()}
+                    {subStationTree.toJS()}
                 </svg>
               )
     }
@@ -107,7 +125,11 @@ Line = React.createClass({
                 <div>
                     <div>
                         <LineSVG height="2200" width="1800" style={style}>
-                            <StationTree xscale={xscale} yscale={yscale} station={station} colour={colour} />
+                            <StationTree
+                                xscale={xscale}
+                                yscale={yscale}
+                                trainsAtStations={this.state.trainsAtStations}
+                                station={station} colour={colour} />
                         </LineSVG>
                     </div>
                 </div>);
