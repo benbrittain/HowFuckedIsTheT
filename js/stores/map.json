@@ -153,6 +153,85 @@
             }
             ]
         }
+    },
+    "Blue Line": {
+        "colour": "blue",
+        "root": {
+            "name": "Wonderland",
+            "next_stations": [
+            {
+                "name": "Revere Beach",
+                "next_stations": [
+                {
+                    "name": "Beachmont",
+                    "next_stations": [
+                    {
+                        "name": "Suffolk Downs",
+                        "next_stations": [
+                        {
+                            "name": "Orient Heights",
+                            "next_stations": [
+                            {
+                                "name": "Wood Island",
+                                "next_stations": [
+                                {
+                                    "name": "Airport",
+                                    "next_stations": [
+                                    {
+                                        "name": "Maverick",
+                                        "next_stations": [
+                                        {
+                                            "name": "Aquarium",
+                                            "next_stations": [
+                                            {
+                                                "name": "State",
+                                                "next_stations": [
+                                                {
+                                                    "name": "Bowdoin",
+                                                    "next_stations": [],
+                                                    "x": "1",
+                                                    "y": "11"
+                                                }
+                                                ],
+                                                "x": "1",
+                                                "y": "10"
+                                            }
+                                            ],
+                                            "x": "1",
+                                            "y": "9"
+                                        }
+                                        ],
+                                        "x": "1",
+                                        "y": "8"
+                                    }
+                                    ],
+                                    "x": "1",
+                                    "y": "7"
+                                }
+                                ],
+                                "x": "1",
+                                "y": "6"
+                            }
+                            ],
+                            "x": "1",
+                            "y": "5"
+                        }
+                        ],
+                        "x": "1",
+                        "y": "4"
+                    }
+                    ],
+                    "x": "1",
+                    "y": "3"
+                }
+                ],
+                "x": "1",
+                "y": "2"
+            }
+            ],
+            "x": "1",
+            "y": "1"
+        }
     }
           }
 }
