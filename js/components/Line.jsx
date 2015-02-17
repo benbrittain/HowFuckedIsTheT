@@ -119,7 +119,7 @@ var LineInfo = React.createClass({
 
         return (
             <div className={"row line-" + this.props.colour}>
-                <div className="container line-info">
+                <div className="container line-directions">
                     <div className="row">
                         {directionColumns}
                     </div>
