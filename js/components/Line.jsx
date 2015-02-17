@@ -112,6 +112,23 @@ Line = React.createClass({
         this.setState(getState());
     },
 
+    /**
+     * @param {Immutable Map} station
+     * @param {Number} size
+     * @return {Number}
+     */
+    treeSize: function(station, size) {
+        if (station === undefined) { return size; }
+        var children = station.get('next_stations');
+        if (children && children.size > 0) {
+            return children.map(function(branch) {
+                return this.treeSize(branch, size + 1);
+            }, this).max();
+        } else {
+            return size;
+        }
+    },
+
     render: function() {
         var stations = LineResources.getStations(this.getParams().colour);
         var style = {'border': '5px solid black'}
@@ -120,6 +137,9 @@ Line = React.createClass({
 
         var colour = stations.get('colour');
         var station = stations.get('root');
+
+        var width = window.innerWidth - 40;
+        var height = this.treeSize(station, 1) * 105;
 
         return (
                 <div>
