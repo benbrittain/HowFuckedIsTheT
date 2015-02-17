@@ -374,6 +374,446 @@
             "x": "1",
             "y": "1"
         }
+    },
+    "Green Line": {
+        "colour": "green",
+        "root": {
+            "name": "Lechmere",
+        "next_stations": [
+            {
+                "name": "Science Park/West End",
+                "next_stations": [
+                    {
+                        "name": "North",
+                        "next_stations": [
+                            {
+                                "name": "Haymarket",
+                                "next_stations": [
+                                    {
+                                        "name": "Park Street",
+                                        "next_stations": [
+                                            {
+                                                "name": "Boylston",
+                                                "next_stations": [
+                                                    {
+                                                        "name": "Arlington",
+                                                        "next_stations": [
+                                                            {
+                                                                "name": "Copley",
+                                                                "next_stations": [
+                                                                    {
+                                                                        "name": "Prudential",
+                                                                        "next_stations": [
+                                                                            {
+                                                                                "name": "Symphony",
+                                                                                "next_stations": [
+                                                                                    {
+                                                                                        "name": "Northeastern University",
+                                                                                        "next_stations": [
+                                                                                            {
+                                                                                                "name": "Museum of Fine Arts",
+                                                                                                "next_stations": [
+                                                                                                    {
+                                                                                                        "name": "Longwood Medical Area",
+                                                                                                        "next_stations": [
+                                                                                                            {
+                                                                                                                "name": "Brigham Circle",
+                                                                                                                "next_stations": [
+                                                                                                                    {
+                                                                                                                        "name": "Fenwood Road",
+                                                                                                                        "next_stations": [
+                                                                                                                            {
+                                                                                                                                "name": "Mission Park",
+                                                                                                                                "next_stations": [
+                                                                                                                                    {
+                                                                                                                                        "name": "Riverway",
+                                                                                                                                        "next_stations": [
+                                                                                                                                            {
+                                                                                                                                                "name": "Back of the Hill",
+                                                                                                                                                "next_stations": [
+                                                                                                                                                    {
+                                                                                                                                                        "name": "Heath Street",
+                                                                                                                                                        "next_stations": [],
+                                                                                                                                                        "x": "2",
+                                                                                                                                                        "y": "19"
+                                                                                                                                                    }
+                                                                                                                                                ],
+                                                                                                                                                "x": "2",
+                                                                                                                                                "y": "18"
+                                                                                                                                            }
+                                                                                                                                        ],
+                                                                                                                                        "x": "2",
+                                                                                                                                        "y": "17"
+                                                                                                                                    }
+                                                                                                                                ],
+                                                                                                                                "x": "2",
+                                                                                                                                "y": "16"
+                                                                                                                            }
+                                                                                                                        ],
+                                                                                                                        "x": "2",
+                                                                                                                        "y": "15"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "x": "2",
+                                                                                                                "y": "14"
+                                                                                                            }
+                                                                                                        ],
+                                                                                                        "x": "2",
+                                                                                                        "y": "13"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "x": "2",
+                                                                                                "y": "12"
+                                                                                            }
+                                                                                        ],
+                                                                                        "x": "2",
+                                                                                        "y": "11"
+                                                                                    }
+                                                                                ],
+                                                                                "x": "2",
+                                                                                "y": "10"
+                                                                            }
+                                                                        ],
+                                                                        "x": "2",
+                                                                        "y": "9"
+                                                                    },
+                                                                    {
+                                                                        "name": "Hynes Convention Center",
+                                                                        "next_stations": [
+                                                                            {
+                                                                                "name": "Kenmore",
+                                                                                "next_stations": [
+                                                                                    {
+                                                                                        "name": "Blandford Street",
+                                                                                        "next_stations": [
+                                                                                            {
+                                                                                                "name": "Boston University East",
+                                                                                                "next_stations": [
+                                                                                                    {
+                                                                                                        "name": "Boston University Central",
+                                                                                                        "next_stations": [
+                                                                                                            {
+                                                                                                                "name": "Boston University West",
+                                                                                                                "next_stations": [
+                                                                                                                    {
+                                                                                                                        "name": "St. Paul Street",
+                                                                                                                        "next_stations": [
+                                                                                                                            {
+                                                                                                                                "name": "Pleasant Street",
+                                                                                                                                "next_stations": [
+                                                                                                                                    {
+                                                                                                                                        "name": "Babcock Street",
+                                                                                                                                        "next_stations": [
+                                                                                                                                            {
+                                                                                                                                                "name": "Packards Corner",
+                                                                                                                                                "next_stations": [
+                                                                                                                                                    {
+                                                                                                                                                        "name": "Harvard Avenue",
+                                                                                                                                                        "next_stations": [
+                                                                                                                                                            {
+                                                                                                                                                                "name": "Griggs Street/Long Avenue",
+                                                                                                                                                                "next_stations": [
+                                                                                                                                                                    {
+                                                                                                                                                                        "name": "Allston Street",
+                                                                                                                                                                        "next_stations": [
+                                                                                                                                                                            {
+                                                                                                                                                                                "name": "Warren Street",
+                                                                                                                                                                                "next_stations": [
+                                                                                                                                                                                    {
+                                                                                                                                                                                        "name": "Washington Street",
+                                                                                                                                                                                        "next_stations": [
+                                                                                                                                                                                            {
+                                                                                                                                                                                                "name": "Sutherland Street",
+                                                                                                                                                                                                "next_stations": [
+                                                                                                                                                                                                    {
+                                                                                                                                                                                                        "name": "Chiswick Road",
+                                                                                                                                                                                                        "next_stations": [
+                                                                                                                                                                                                            {
+                                                                                                                                                                                                                "name": "Chestnut Hill Avenue",
+                                                                                                                                                                                                                "next_stations": [
+                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                        "name": "South Street",
+                                                                                                                                                                                                                        "next_stations": [
+                                                                                                                                                                                                                            {
+                                                                                                                                                                                                                                "name": "Boston College",
+                                                                                                                                                                                                                                "next_stations": [],
+                                                                                                                                                                                                                                "x": "3",
+                                                                                                                                                                                                                                "y": "28"
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                        ],
+                                                                                                                                                                                                                        "x": "3",
+                                                                                                                                                                                                                        "y": "27"
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                ],
+                                                                                                                                                                                                                "x": "3",
+                                                                                                                                                                                                                "y": "26"
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                        ],
+                                                                                                                                                                                                        "x": "3",
+                                                                                                                                                                                                        "y": "25"
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                ],
+                                                                                                                                                                                                "x": "3",
+                                                                                                                                                                                                "y": "24"
+                                                                                                                                                                                            }
+                                                                                                                                                                                        ],
+                                                                                                                                                                                        "x": "3",
+                                                                                                                                                                                        "y": "23"
+                                                                                                                                                                                    }
+                                                                                                                                                                                ],
+                                                                                                                                                                                "x": "3",
+                                                                                                                                                                                "y": "22"
+                                                                                                                                                                            }
+                                                                                                                                                                        ],
+                                                                                                                                                                        "x": "3",
+                                                                                                                                                                        "y": "21"
+                                                                                                                                                                    }
+                                                                                                                                                                ],
+                                                                                                                                                                "x": "3",
+                                                                                                                                                                "y": "20"
+                                                                                                                                                            }
+                                                                                                                                                        ],
+                                                                                                                                                        "x": "3",
+                                                                                                                                                        "y": "19"
+                                                                                                                                                    }
+                                                                                                                                                ],
+                                                                                                                                                "x": "3",
+                                                                                                                                                "y": "18"
+                                                                                                                                            }
+                                                                                                                                        ],
+                                                                                                                                        "x": "3",
+                                                                                                                                        "y": "17"
+                                                                                                                                    }
+                                                                                                                                ],
+                                                                                                                                "x": "3",
+                                                                                                                                "y": "16"
+                                                                                                                            }
+                                                                                                                        ],
+                                                                                                                        "x": "3",
+                                                                                                                        "y": "15"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "x": "3",
+                                                                                                                "y": "14"
+                                                                                                            }
+                                                                                                        ],
+                                                                                                        "x": "3",
+                                                                                                        "y": "13"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "x": "3",
+                                                                                                "y": "12"
+                                                                                            }
+                                                                                        ],
+                                                                                        "x": "3",
+                                                                                        "y": "11"
+                                                                                    },
+                                                                                    {
+                                                                                        "name": "St. Marys Street",
+                                                                                        "next_stations": [
+                                                                                            {
+                                                                                                "name": "Hawes Street",
+                                                                                                "next_stations": [
+                                                                                                    {
+                                                                                                        "name": "St. Paul Street",
+                                                                                                        "next_stations": [
+                                                                                                            {
+                                                                                                                "name": "Coolidge Corner",
+                                                                                                                "next_stations": [
+                                                                                                                    {
+                                                                                                                        "name": "Summit Avenue",
+                                                                                                                        "next_stations": [
+                                                                                                                            {
+                                                                                                                                "name": "Brandon Hall",
+                                                                                                                                "next_stations": [
+                                                                                                                                    {
+                                                                                                                                        "name": "Fairbanks",
+                                                                                                                                        "next_stations": [
+                                                                                                                                            {
+                                                                                                                                                "name": "Washington Square",
+                                                                                                                                                "next_stations": [
+                                                                                                                                                    {
+                                                                                                                                                        "name": "Tappan Street",
+                                                                                                                                                        "next_stations": [
+                                                                                                                                                            {
+                                                                                                                                                                "name": "Dean Road",
+                                                                                                                                                                "next_stations": [
+                                                                                                                                                                    {
+                                                                                                                                                                        "name": "Englewood Avenue",
+                                                                                                                                                                        "next_stations": [],
+                                                                                                                                                                        "x": "4",
+                                                                                                                                                                        "y": "21"
+                                                                                                                                                                    }
+                                                                                                                                                                ],
+                                                                                                                                                                "x": "4",
+                                                                                                                                                                "y": "20"
+                                                                                                                                                            }
+                                                                                                                                                        ],
+                                                                                                                                                        "x": "4",
+                                                                                                                                                        "y": "19"
+                                                                                                                                                    }
+                                                                                                                                                ],
+                                                                                                                                                "x": "4",
+                                                                                                                                                "y": "18"
+                                                                                                                                            }
+                                                                                                                                        ],
+                                                                                                                                        "x": "4",
+                                                                                                                                        "y": "17"
+                                                                                                                                    }
+                                                                                                                                ],
+                                                                                                                                "x": "4",
+                                                                                                                                "y": "16"
+                                                                                                                            }
+                                                                                                                        ],
+                                                                                                                        "x": "4",
+                                                                                                                        "y": "15"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "x": "4",
+                                                                                                                "y": "14"
+                                                                                                            }
+                                                                                                        ],
+                                                                                                        "x": "4",
+                                                                                                        "y": "13"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "x": "4",
+                                                                                                "y": "12"
+                                                                                            }
+                                                                                        ],
+                                                                                        "x": "4",
+                                                                                        "y": "11"
+                                                                                    },
+                                                                                    {
+                                                                                        "name": "Fenway",
+                                                                                        "next_stations": [
+                                                                                            {
+                                                                                                "name": "Longwood",
+                                                                                                "next_stations": [
+                                                                                                    {
+                                                                                                        "name": "Brookline Village",
+                                                                                                        "next_stations": [
+                                                                                                            {
+                                                                                                                "name": "Brookline Hills",
+                                                                                                                "next_stations": [
+                                                                                                                    {
+                                                                                                                        "name": "Beaconsfield",
+                                                                                                                        "next_stations": [
+                                                                                                                            {
+                                                                                                                                "name": "Cleveland Circle",
+                                                                                                                                "next_stations": [
+                                                                                                                                    {
+                                                                                                                                        "name": "Chestnut Hill",
+                                                                                                                                        "next_stations": [
+                                                                                                                                            {
+                                                                                                                                                "name": "Newton Centre",
+                                                                                                                                                "next_stations": [
+                                                                                                                                                    {
+                                                                                                                                                        "name": "Newton Highlands",
+                                                                                                                                                        "next_stations": [
+                                                                                                                                                            {
+                                                                                                                                                                "name": "Eliot",
+                                                                                                                                                                "next_stations": [
+                                                                                                                                                                    {
+                                                                                                                                                                        "name": "Waban",
+                                                                                                                                                                        "next_stations": [
+                                                                                                                                                                            {
+                                                                                                                                                                                "name": "Woodland",
+                                                                                                                                                                                "next_stations": [
+                                                                                                                                                                                    {
+                                                                                                                                                                                        "name": "Riverside",
+                                                                                                                                                                                        "next_stations": [],
+                                                                                                                                                                                        "x": "5",
+                                                                                                                                                                                        "y": "22"
+                                                                                                                                                                                    }
+                                                                                                                                                                                ],
+                                                                                                                                                                                "x": "5",
+                                                                                                                                                                                "y": "21"
+                                                                                                                                                                            }
+                                                                                                                                                                        ],
+                                                                                                                                                                        "x": "5",
+                                                                                                                                                                        "y": "20"
+                                                                                                                                                                    }
+                                                                                                                                                                ],
+                                                                                                                                                                "x": "5",
+                                                                                                                                                                "y": "20"
+                                                                                                                                                            }
+                                                                                                                                                        ],
+                                                                                                                                                        "x": "5",
+                                                                                                                                                        "y": "19"
+                                                                                                                                                    }
+                                                                                                                                                ],
+                                                                                                                                                "x": "5",
+                                                                                                                                                "y": "18"
+                                                                                                                                            }
+                                                                                                                                        ],
+                                                                                                                                        "x": "5",
+                                                                                                                                        "y": "17"
+                                                                                                                                    }
+                                                                                                                                ],
+                                                                                                                                "x": "5",
+                                                                                                                                "y": "16"
+                                                                                                                            }
+                                                                                                                        ],
+                                                                                                                        "x": "5",
+                                                                                                                        "y": "15"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "x": "5",
+                                                                                                                "y": "14"
+                                                                                                            }
+                                                                                                        ],
+                                                                                                        "x": "5",
+                                                                                                        "y": "13"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "x": "5",
+                                                                                                "y": "12"
+                                                                                            }
+                                                                                        ],
+                                                                                        "x": "5",
+                                                                                        "y": "11"
+                                                                                    }
+                                                                                ],
+                                                                                "x": "1",
+                                                                                "y": "10"
+                                                                            }
+                                                                        ],
+                                                                        "x": "1",
+                                                                        "y": "9"
+                                                                    }
+                                                                ],
+                                                                "x": "1",
+                                                                "y": "8"
+                                                            }
+                                                        ],
+                                                        "x": "1",
+                                                        "y": "7"
+                                                    }
+                                                ],
+                                                "x": "1",
+                                                "y": "6"
+                                            }
+                                        ],
+                                        "x": "1",
+                                        "y": "5"
+                                    }
+                                ],
+                                "x": "1",
+                                "y": "4"
+                            }
+                        ],
+                        "x": "1",
+                        "y": "3"
+                    }
+                ],
+                "x": "1",
+                "y": "2"
+            }
+        ],
+        "x": "1",
+        "y": "1"
+        }
     }
           }
 }
