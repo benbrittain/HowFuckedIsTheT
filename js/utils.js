@@ -1,5 +1,7 @@
 'use strict';
 
+var Immutable = require('immutable')
+
 /**
  * Looks up deep values in src from the given list of strings
  * @param {Immutable Map} src
@@ -9,7 +11,7 @@
  */
 function getDeepImmutableValues(src, lookup) {
     if (src === undefined) {
-        return undefined;
+        return Immutable.List();
     } else if (lookup.size === 1) {
         return src.get(lookup.first());
     } else if (lookup.size > 1) {
@@ -19,7 +21,7 @@ function getDeepImmutableValues(src, lookup) {
                 return getDeepImmutableValues(s, lookup.shift());
             });
         } else {
-            return undefined;
+            return Immutable.List();
         }
     } else {
         return src;

@@ -36,39 +36,71 @@ function _createLines(lines) {
 function _calculateFuckedness() {
     var trainLines = TrainStore.getTrainLines();
     _names.forEach(function(colour) {
-        var allStops = Utils.getDeepImmutableValues(trainLines, Immutable.List([colour, 'direction', 'trip', 'stop']));
-        if (allStops) {
-            var waitTimes = Immutable.Map();
-            allStops.forEach(function(stop) {
-                if (stop.get('stop_id') && stop.get('pre_away')) {
-                    var stopId = stop.get('stop_id');
-                    var wait = parseInt(stop.get('pre_away'));
-                    var previousWait = waitTimes.get(stopId);
-                    if (previousWait === undefined || wait < previousWait) {
-                        waitTimes = waitTimes.set(stopId, wait);
-                    }
-                }
-            });
-            _updateLineWait(colour, _averageWait(waitTimes));
+        var trainsByDirection = Utils.getDeepImmutableValues(trainLines, Immutable.List([colour, 'direction']));
+        var allTrains = trainsByDirection.flatMap(function(dir) {
+            return dir.get('trip');
+        });
+
+        if (trainsByDirection.size > 0 && allTrains.size > 0) {
+            var dirs = _calculateFucknessByDirection(trainsByDirection);
+            var overall = _fuckednessDetails(allTrains);
+
+            if (dirs && overall) {
+                // Set new line data
+                var line = _lines.get(colour);
+                line = line.merge(overall.merge({ 'directions': dirs }))
+                _lines = _lines.set(colour, line);
+            }
         }
     });
 }
 
 /**
- * Updates the given line with the average wait provided
- * @param {String} colour
- * @param {Number} avgWait
+ * Calculats fuckness and groups by direction
+ * @param {Immutable List} allDirections
+ * @return {Immutable Map}
  * @private
  */
-function _updateLineWait(colour, avgWait) {
-    if (colour && avgWait) {
-        var line = _lines.get(colour);
-        line = line.merge({
-            'wait': Math.round(avgWait / 60).toString() + ' mins',
-            'fuckedness': _secondsToFuckedness(avgWait)
+function _calculateFucknessByDirection(allDirections) {
+    var directions = Immutable.Map();
+    if (allDirections.size > 0) {
+        allDirections.forEach(function(dir) {
+            if (dir.has('direction_name') && dir.has('trip')) {
+                var details = _fuckednessDetails(dir.get('trip'));
+                if (details) {
+                    directions = directions.set(dir.get('direction_name'), details);
+                }
+            }
         });
-        _lines = _lines.set(colour, line);
     }
+    return directions;
+}
+
+/**
+ * Calculates fuckness details for trips
+ * @param {Immutable List} trips
+ * @return {Immutable Map}
+ * @private
+ */
+function _fuckednessDetails(trips) {
+    if (trips.size > 0) {
+        var stops = trips.flatMap(function(trip) {
+            if (trip.has('stop')) {
+                return trip.get('stop');
+            }
+        });
+        if (stops.size > 0) {
+            var avgWait = _averageWaitForStops(stops);
+            if (avgWait) {
+                return Immutable.Map({
+                    'trains': trips.size,
+                    'wait': Math.round(avgWait / 60).toString() + ' mins',
+                    'fuckedness': _secondsToFuckedness(avgWait)
+                });
+            }
+        }
+    }
+    return undefined;
 }
 
 /**
@@ -76,12 +108,25 @@ function _updateLineWait(colour, avgWait) {
  * @return {Number}
  * @private
  */
-function _averageWait(stops) {
-    if (stops.size > 0) {
-        var sum = stops.reduce(function(previousValue, currentValue, index, array) {
+function _averageWaitForStops(stops) {
+    var waitTimes = Immutable.Map();
+    if (stops) {
+        stops.forEach(function(stop) {
+            if (stop.get('stop_id') && stop.get('pre_away')) {
+                var stopId = stop.get('stop_id');
+                var wait = parseInt(stop.get('pre_away'));
+                var previousWait = waitTimes.get(stopId);
+                if (previousWait === undefined || wait < previousWait) {
+                    waitTimes = waitTimes.set(stopId, wait);
+                }
+            }
+        });
+    }
+    if (waitTimes.size > 0) {
+        var sum = waitTimes.reduce(function(previousValue, currentValue, index, array) {
             return previousValue + currentValue;
         });
-        return sum / stops.size;
+        return sum / waitTimes.size;
     } else {
         return undefined;
     }
