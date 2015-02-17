@@ -13,6 +13,10 @@ git reset
 npm install
 npm run build
 
+# npm run build is... not awesome.
+# better to detect if bundle.min.js is created
+read -p "Press any key after the building is complete..."
+
 git add index.html
 git add main.css
 git add main.css.map
