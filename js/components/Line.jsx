@@ -45,7 +45,9 @@ var TrainLine = React.createClass({
 
 var Train = React.createClass({
     render: function() {
-        return ( <rect height="50" width="50" {...this.props} >{this.props.children}</rect>)
+        var x = this.props.x;
+        var y = this.props.y;
+        return ( <rect height="50" width="50" x={this.props.x} y={this.props.y - 25}>{this.props.children}</rect>)
     }
 });
 
@@ -54,42 +56,49 @@ var StationTree = React.createClass({
     render: function() {
         var { station, ...other } = this.props;
         var trainsAtStations = this.props.trainsAtStations;
+        var centerPoint = this.props.width / 2;
+        var xscale = this.props.xscale;
+        var yscale = this.props.yscale;
+        var name = this.props.station.get('name');
 
         var children = this.props.station.get('next_stations');
-        var x = (this.props.xscale * parseInt(station.get('x')));
-        var y = (this.props.yscale * parseInt(station.get('y')));
-        var name = station.get('name');
+        var x = centerPoint + (xscale * parseInt(station.get('x')));
+        var y = yscale * parseInt(station.get('y'));
 
-        var subStationTree = children.map(nextStation =>
-                <StationTree station={nextStation} {...other} />);
-        var trainLines = children.map(nextStation =>
-                        <TrainLine x1={x} y1={y}
-                                   x2={parseInt(nextStation.get('x')) * this.props.xscale}
-                                   y2={parseInt(nextStation.get('y')) * this.props.yscale} />
-                        );
+        var nextStations = children.map(nextStation => <StationTree station={nextStation} {...other} />);
+
+
+        var trainLines = children.map(nextStation => <TrainLine x1={x} y1={y}
+                                                        x2={centerPoint + (this.props.xscale * parseInt(nextStation.get('x')))}
+                                                        y2={parseInt(nextStation.get('y')) * this.props.yscale} />);
 
         var trains = Immutable.Map();
         var station = trainsAtStations.get(name);
         if (station) {
             trains = station.map(function(train, offset) {
                 offset = offset + 1;
-                //if (train.get('direction') == 'Westbound' || train.get('direction') == 'Northbound') {
-                //} else {
-                var x = (this.props.xscale * parseInt(this.props.station.get('x'))) - (offset * 100);
-                var y = this.props.yscale * parseInt(this.props.station.get('y'));
-                return (<Train x={x} y={y} />);
-                //}
+                var station = this.props.station;
+                var xscale = this.props.xscale;
+                var yscale = this.props.yscale;
+                var x = centerPoint + (xscale * parseInt(station.get('x'))) - (offset * 80);
+                var y = yscale * parseInt(station.get('y'));
+
+                if (train.get('direction') == 'Westbound' || train.get('direction') == 'Northbound') {
+                    // TODO: MAKE THE TRAINS DIFFERENT
+                    return (<Train x={x} y={y} />);
+                } else {
+                    return (<Train x={x} y={y} />);
+                }
             }, this);
         }
 
-        return(
+        return (
                 <svg>
                     {trainLines.toJS()}
-                    <Station x={x} y={y} name={name} />
+                    {nextStations.toJS()}
                     {trains.toJS()}
-                    {subStationTree.toJS()}
-                </svg>
-              )
+                    <Station x={x} y={y} name={name}/>
+                </svg>);
     }
 });
 
@@ -167,23 +176,24 @@ Line = React.createClass({
 
     render: function() {
         var stations = LineResources.getStations(this.getParams().colour);
-        var style = {'border': '5px solid black'}
-        var yscale = 100;
-        var xscale = 300;
-
         var colour = stations.get('colour');
         var station = stations.get('root');
 
         var width = window.innerWidth - 40;
         var height = this.treeSize(station, 1) * 105;
 
+        var yscale = 100;
+        var xscale = width / 5;
+
+
         return (
                 <div>
                     <LineInfo line={this.state.lines.get(this.getParams().colour) || Immutable.Map()} colour={colour} />
                     <div>
-                        <LineSVG height={height} width={width} style={style}>
+                        <LineSVG height={height} width={width}>
                             <StationTree
-                                mp={width/2}
+                                width={width}
+                                height={height}
                                 xscale={xscale}
                                 yscale={yscale}
                                 trainsAtStations={this.state.trainsAtStations}
