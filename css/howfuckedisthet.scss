@@ -15,7 +15,10 @@ $red: hsl(2, 95%, 57%);
 @mixin responsive($base-size) {
     $line-height-computed: floor($base-size * $line-height-base);
 
-    body { font-size: $base-size; }
+    body {
+        font-size: $base-size;
+        font-family: 'Arial', sans-serif;
+    }
     h1, .h1 { font-size: floor($base-size * 2.6); }
     h2, .h2 { font-size: floor($base-size * 2.15); }
     h3, .h3 { font-size: ceil($base-size * 1.7); }
