@@ -194,7 +194,7 @@ Line = React.createClass({
         var station = stations.get('root');
 
         var width = window.innerWidth - 40;
-        var height = this.treeSize(station, 1) * 80;
+        var height = this.treeSize(station, 1) * 105;
 
         var branches = this.treeWidth(station, 0);
 
