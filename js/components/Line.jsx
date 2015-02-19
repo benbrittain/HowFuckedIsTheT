@@ -39,7 +39,7 @@ var Station = React.createClass({
 
 var TrainLine = React.createClass({
     render: function() {
-        return( <line {...this.props} strokeWidth="20" stroke="red" />)
+        return( <line {...this.props} strokeWidth="20" stroke={this.props.colour} />)
     }
 });
 
@@ -67,10 +67,10 @@ var StationTree = React.createClass({
 
         var nextStations = children.map(nextStation => <StationTree station={nextStation} {...other} />);
 
-
         var trainLines = children.map(nextStation => <TrainLine x1={x} y1={y}
                                                         x2={centerPoint + (this.props.xscale * parseInt(nextStation.get('x')))}
-                                                        y2={parseInt(nextStation.get('y')) * this.props.yscale} />);
+                                                        y2={parseInt(nextStation.get('y')) * this.props.yscale}
+                                                        colour={this.props.colour} />);
 
         var trains = Immutable.Map();
         var station = trainsAtStations.get(name);
