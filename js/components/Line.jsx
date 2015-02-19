@@ -30,7 +30,7 @@ var Station = React.createClass({
     render: function() {
         return (
                 <svg>
-                    <text x={this.props.x + 50} y={this.props.y}>{this.props.name}</text>
+                    <text x={this.props.x + 25} y={this.props.y}>{this.props.name}</text>
                     <circle cx={this.props.x} cy={this.props.y} r="25"> station </circle>
                 </svg>
                 );
@@ -174,17 +174,32 @@ Line = React.createClass({
         }
     },
 
+    treeWidth: function(station, size) {
+        var children = station.get('next_stations');
+        if (children && children.size > 0) {
+            // folding in JS is weird :/
+            var count = 0;
+            children.map(function(branch) {
+                count = count + this.treeWidth(branch, size);
+            }, this);
+            return count;
+        } else {
+            return size + 1;
+        }
+    },
+
     render: function() {
         var stations = LineResources.getStations(this.getParams().colour);
         var colour = stations.get('colour');
         var station = stations.get('root');
 
         var width = window.innerWidth - 40;
-        var height = this.treeSize(station, 1) * 105;
+        var height = this.treeSize(station, 1) * 80;
+
+        var branches = this.treeWidth(station, 0);
 
         var yscale = 100;
-        var xscale = width / 5;
-
+        var xscale = width / (branches + 2);
 
         return (
                 <div>
