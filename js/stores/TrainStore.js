@@ -31,32 +31,25 @@ function _updateTrains(trainLine) {
  * @param {Immutable Map} trainLine
  * @private
  */
-function _whatStationToPlaceTrainsAt(trainLine) {
-    var name = trainLine.get('route_name');
-    _trains.get(name).map(function(linepart) {
-            linepart.get('direction').map(function(direction) {
-                var heading = direction.get('direction_name');
-                direction.get('trip').map(function(train) {
-                    var nextStop = train.get('stop').first();
-                    var name = nextStop.get('stop_name');
-                    var timeAway = nextStop.get('pre_away');
-                    var trainData = Immutable.Map({
-                        timeAway: timeAway,
-                        direcion: heading
-                    });
-                    var nameArr = name.split('-');
-                    if (nameArr.length > 1) {
-                        name = nameArr[0].trim();
-                    }
-                    var station = _trainsAtStations.get(name);
-                    if (station) {
-                        var l = station.push(trainData)
-                    } else {
-                        var l = Immutable.List().push(trainData);
-                    }
-                    _trainsAtStations = _trainsAtStations.set(name, l);
-                })
-            })
+function _whatStationToPlaceTrainsAt(route) {
+    var routeName = route.get('route_name');
+    route.get('direction').forEach(function(dir) {
+        var direction = dir.get('direction_name');
+        dir.get('trip').forEach(function(trip) {
+            var nextStop = trip.get('stop').first();
+            var name = nextStop.get('stop_name');
+            var nameArr = name.split('-');
+            if (nameArr.length > 1) {
+                name = nameArr[0].trim();
+            }
+            var trains = _trainsAtStations.get(name) || Immutable.List();
+            trains = trains.push(Immutable.Map({
+                wait: parseInt(nextStop.get('pre_away')),
+                direction: direction,
+                route: routeName
+            }));
+            _trainsAtStations = _trainsAtStations.set(name, trains);
+        });
     });
 }
 

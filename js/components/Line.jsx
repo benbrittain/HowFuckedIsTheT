@@ -55,10 +55,9 @@ var StationTree = React.createClass({
         var { station, ...other } = this.props;
         var trainsAtStations = this.props.trainsAtStations;
 
-
         var children = this.props.station.get('next_stations');
-        var x = this.props.xscale * parseInt(station.get('x'));
-        var y = this.props.yscale * parseInt(station.get('y'));
+        var x = (this.props.xscale * parseInt(station.get('x')));
+        var y = (this.props.yscale * parseInt(station.get('y')));
         var name = station.get('name');
 
         var subStationTree = children.map(nextStation =>
@@ -73,12 +72,13 @@ var StationTree = React.createClass({
         var station = trainsAtStations.get(name);
         if (station) {
             trains = station.map(function(train, offset) {
-                console.log("MAKIN A TRAIN");
-                var x = this.props.xscale * parseInt(this.props.station.get('x'));
+                offset = offset + 1;
+                //if (train.get('direction') == 'Westbound' || train.get('direction') == 'Northbound') {
+                //} else {
+                var x = (this.props.xscale * parseInt(this.props.station.get('x'))) - (offset * 100);
                 var y = this.props.yscale * parseInt(this.props.station.get('y'));
-                console.log(x);
-                console.log(y);
-                return (<Train x={x - 100} y={y} />)
+                return (<Train x={x} y={y} />);
+                //}
             }, this);
         }
 
@@ -183,6 +183,7 @@ Line = React.createClass({
                     <div>
                         <LineSVG height={height} width={width} style={style}>
                             <StationTree
+                                mp={width/2}
                                 xscale={xscale}
                                 yscale={yscale}
                                 trainsAtStations={this.state.trainsAtStations}
