@@ -28,10 +28,18 @@ var LineSVG = React.createClass({
 
 var Station = React.createClass({
     render: function() {
+        var radius = 25;
+
         return (
                 <g>
-                    <text x={this.props.x + 25} y={this.props.y}>{this.props.name}</text>
-                    <circle cx={this.props.x} cy={this.props.y} r="25"> station </circle>
+                <title>[time here]</title>
+                    <circle
+                        onClick={function(e) {console.log('yo');}}
+                        cx={this.props.x}
+                        cy={this.props.y}
+                        r={radius}> station </circle>
+                    <text x={this.props.x + (radius/2)+15}
+                          y={this.props.y + (radius/2)}>{this.props.name}</text>
                 </g>
                 );
     }
@@ -44,13 +52,12 @@ var TrainLine = React.createClass({
 });
 
 var Train = React.createClass({
-
     northbound: function(x,y) {
-        return x+","+y+" "+(x-30)+","+(y+40)+" "+(x+30)+","+(y+40);
+        return x+","+y+" "+(x-20)+","+(y+40)+" "+(x+20)+","+(y+40);
     },
 
     southbound: function(x,y) {
-        return x+","+y+" "+(x-30)+","+(y-40)+" "+(x+30)+","+(y-40);
+        return x+","+y+" "+(x-20)+","+(y-40)+" "+(x+20)+","+(y-40);
     },
 
     render: function() {
@@ -82,10 +89,11 @@ var StationTree = React.createClass({
 
         var nextStations = children.map(nextStation => <StationTree station={nextStation} {...other} />);
 
-        var trainLines = children.map(nextStation => <TrainLine x1={x} y1={y}
-                                                        x2={centerPoint + (this.props.xscale * parseInt(nextStation.get('x')))}
-                                                        y2={parseInt(nextStation.get('y')) * this.props.yscale}
-                                                        colour={this.props.colour} />);
+        var trainLines = children.map(nextStation =>
+                <TrainLine x1={x} y1={y}
+                    x2={centerPoint + (this.props.xscale * parseInt(nextStation.get('x')))}
+                    y2={parseInt(nextStation.get('y')) * this.props.yscale}
+                    colour={this.props.colour} />);
 
         var trains = Immutable.Map();
         var station = trainsAtStations.get(name);
@@ -95,18 +103,22 @@ var StationTree = React.createClass({
                 var station = this.props.station;
                 var xscale = this.props.xscale;
                 var yscale = this.props.yscale;
-                var x = centerPoint + (xscale * parseInt(station.get('x'))) - (offset * 80);
+                var x = centerPoint + (xscale * parseInt(station.get('x'))) - (offset * 50);
                 var y = yscale * parseInt(station.get('y'));
                 return (<Train x={x} y={y} dir={train.get('direction')}/>);
             }, this);
         }
 
         return (<g>
-                    {trainLines.toJS()}
-                    {nextStations.toJS()}
-                    {trains.toJS()}
+                    <g>
+                        {trainLines.toJS()}
+                        {trains.toJS()}
+                        {nextStations.toJS()}
+                    </g>
+
                     <Station x={x} y={y} name={name}/>
-                </g>);
+                </g>
+               );
     }
 });
 
