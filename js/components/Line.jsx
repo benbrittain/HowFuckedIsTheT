@@ -29,10 +29,10 @@ var LineSVG = React.createClass({
 var Station = React.createClass({
     render: function() {
         return (
-                <svg>
+                <g>
                     <text x={this.props.x + 25} y={this.props.y}>{this.props.name}</text>
                     <circle cx={this.props.x} cy={this.props.y} r="25"> station </circle>
-                </svg>
+                </g>
                 );
     }
 });
@@ -44,10 +44,25 @@ var TrainLine = React.createClass({
 });
 
 var Train = React.createClass({
+
+    northbound: function(x,y) {
+        return x+","+y+" "+(x-30)+","+(y+40)+" "+(x+30)+","+(y+40);
+    },
+
+    southbound: function(x,y) {
+        return x+","+y+" "+(x-30)+","+(y-40)+" "+(x+30)+","+(y-40);
+    },
+
     render: function() {
-        var x = this.props.x;
-        var y = this.props.y;
-        return ( <rect height="50" width="50" x={this.props.x} y={this.props.y - 25}>{this.props.children}</rect>)
+        var x = parseInt(this.props.x);
+        var y = parseInt(this.props.y);
+        var direction = this.props.dir;
+        if (direction == 'Westbound' || direction == 'Northbound') {
+            var points = this.northbound(x,y);
+        } else {
+            var points = this.southbound(x,y);
+        }
+        return(<polygon points={points}></polygon>)
     }
 });
 
@@ -82,23 +97,16 @@ var StationTree = React.createClass({
                 var yscale = this.props.yscale;
                 var x = centerPoint + (xscale * parseInt(station.get('x'))) - (offset * 80);
                 var y = yscale * parseInt(station.get('y'));
-
-                if (train.get('direction') == 'Westbound' || train.get('direction') == 'Northbound') {
-                    // TODO: MAKE THE TRAINS DIFFERENT
-                    return (<Train x={x} y={y} />);
-                } else {
-                    return (<Train x={x} y={y} />);
-                }
+                return (<Train x={x} y={y} dir={train.get('direction')}/>);
             }, this);
         }
 
-        return (
-                <svg>
+        return (<g>
                     {trainLines.toJS()}
                     {nextStations.toJS()}
                     {trains.toJS()}
                     <Station x={x} y={y} name={name}/>
-                </svg>);
+                </g>);
     }
 });
 
